@@ -396,3 +396,98 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+
+
+
+
+
+
+const muteToggle = document.getElementById("muteToggle");
+let isMuted = localStorage.getItem("muted") === "true" ? true : false;
+muteToggle.checked = !isMuted; 
+
+function updateMuteState() {
+    const audioElements = document.querySelectorAll("audio");
+
+    audioElements.forEach(a => a.muted = isMuted);
+    clickSound.muted = isMuted;
+    closeSound.muted = isMuted;
+
+    localStorage.setItem("muted", isMuted);
+}
+
+muteToggle.addEventListener("change", () => {
+    isMuted = !muteToggle.checked;
+    updateMuteState();
+});
+
+updateMuteState();
+
+
+
+
+const langToggle = document.getElementById("langToggle");
+const langLabel = document.querySelector(".lang-text");
+const homeButtons = document.querySelectorAll(".buttons .btn:not(.link-icon)");
+
+let currentLang = localStorage.getItem("lang") || "EN";
+localStorage.setItem("lang", currentLang); 
+
+const translations = {
+    EN: ["About Me", "Resume", "Contact Me"],
+    IT: ["Chi Sono", "Curriculum", "Contattami"]
+};
+
+function applyLanguage(lang) {
+    langLabel.style.opacity = 0;
+    homeButtons.forEach(btn => btn.style.opacity = 0);
+
+    setTimeout(() => {
+        langLabel.textContent = lang;
+        translations[lang].forEach((txt, i) => {
+            homeButtons[i].textContent = txt;
+        });
+        langLabel.style.opacity = 1;
+        homeButtons.forEach(btn => btn.style.opacity = 1);
+    }, 200);
+
+    localStorage.setItem("lang", lang);
+}
+
+function setLanguage(lang) {
+    langToggle.checked = (lang === "IT");
+    aboutSwitch.checked = (lang === "IT");
+    contactSwitch.checked = (lang === "IT");
+
+    applyLanguage(lang);
+
+    aboutText.style.opacity = 0;
+    setTimeout(() => {
+        aboutText.innerHTML = (lang === "IT" ? aboutIT_HTML : aboutEN_HTML);
+        aboutLabel.textContent = lang;
+        aboutText.style.opacity = 1;
+    }, 200);
+
+    toggleContactLang(); 
+}
+
+setLanguage(currentLang);
+
+langToggle.addEventListener("change", () => {
+    const lang = langToggle.checked ? "IT" : "EN";
+    setLanguage(lang);
+});
+
+aboutSwitch.addEventListener("change", () => {
+    const lang = aboutSwitch.checked ? "IT" : "EN";
+    setLanguage(lang);
+});
+
+contactSwitch.addEventListener("change", () => {
+    const lang = contactSwitch.checked ? "IT" : "EN";
+    setLanguage(lang);
+});
+
+
