@@ -57,6 +57,7 @@ body {
   animation: fadeInVideo 1.5s ease forwards;
 }
 
+
 @keyframes fadeInVideo {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -106,6 +107,9 @@ h1 { font-size: 56px;
     0 0 16px #ffffff,
     0 0 24px #ffffff,
     0 0 40px #ffffff;
+}
+.buttons .btn, .lang-text {
+  transition: opacity 0.3s ease;
 }
 
 .buttons { display: flex; gap: 16px; align-items: center; font-family: 'Outfit', sans-serif; }
@@ -487,9 +491,6 @@ input:checked + .slider::before {
   font-weight: 600;
   font-size: 16px;
 }
-.contact-email :hover {
-  color: #8bf7ff; 
-}
 
 .icon-btn {
   display: inline-flex;
@@ -599,6 +600,91 @@ input:checked + .slider::before {
   transform: translateY(-6px);
   pointer-events: none;
 }
+
+
+
+.settings-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 20px;
+    z-index: 2000;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.7s ease forwards;
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-slider {
+    width: 48px;
+    height: 24px;
+    background: rgba(255, 255, 255, .25);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggle-slider::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.toggle-input:checked + .toggle-slider {
+    background: #adadad;
+    box-shadow: 0 0 10px rgba(48, 48, 48, 0.6);
+}
+
+.toggle-input:checked + .toggle-slider::after {
+    transform: translateX(24px);
+}
+
+.toggle-label {
+    color: white;
+    font-size: 14px;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.lang-text {
+    display: inline-block;
+    transition: opacity 0.25s ease;
+}
+
+.toggle-container:hover .toggle-slider {
+    box-shadow: 0 0 10px rgba(255, 255, 255, .7);
+}
+.lang-text {
+  display: inline-block;
+  transition: opacity 0.25s ease;
+}
+
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
 
 @media (max-width: 768px) {
   .dev-warning {
