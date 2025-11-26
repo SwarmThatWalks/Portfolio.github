@@ -313,7 +313,7 @@ footer .footer-content {
   width: 16px;
   left: 2px;
   bottom: 2px;
-  background-color: #000000;
+  background-color: #ffffff;
   border-radius: 50%;
   transition: 0.4s;
 }
@@ -358,7 +358,7 @@ input:checked + .slider::before {
 }
 
 #aboutText span.skill {
-  color: #ff580b;
+  color: #af92ff;
   font-weight: 600;
 }
 
@@ -482,13 +482,13 @@ input:checked + .slider::before {
 }
 
 .contact-email {
-  color: #ff580b;
+  color: #8d46ff;
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
 }
 .contact-email :hover {
-  color: #ffc28b; 
+  color: #8bf7ff; 
 }
 
 .icon-btn {
@@ -756,4 +756,3 @@ body.modal-open .modal-overlay { display: block; animation: overlayFadeIn 0.22s 
     white-space: pre;
   }
 }
-
