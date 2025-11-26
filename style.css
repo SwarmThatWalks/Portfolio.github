@@ -56,7 +56,28 @@ body {
   opacity: 0;
   animation: fadeInVideo 1.5s ease forwards;
 }
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(0,0,0,0.1);
+  border-top-color: #8d46ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
 @keyframes fadeInVideo {
   from { opacity: 0; }
