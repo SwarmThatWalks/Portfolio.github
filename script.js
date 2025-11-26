@@ -490,4 +490,45 @@ contactSwitch.addEventListener("change", () => {
     setLanguage(lang);
 });
 
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+
+    if (preloader) {
+        preloader.style.opacity = '1';
+        preloader.style.transition = 'opacity 0.6s ease';
+
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 600);
+        }, 300);
+    }
+});
+const preloader = document.getElementById("preloader");
+const bgVideo = document.getElementById("bgVideo");
+
+function hidePreloader() {
+    if (!preloader) return;
+
+    preloader.style.opacity = '1';
+    preloader.style.transition = 'opacity 0.6s ease';
+
+    setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 600);
+    }, 300);
+}
+
+if (bgVideo) {
+    
+    bgVideo.addEventListener('canplaythrough', () => {
+        hidePreloader();
+    });
+} else {
+    window.addEventListener("load", hidePreloader);
+}
+
 
