@@ -355,27 +355,35 @@ function applyLanguage(lang) {
 }
 
 function applyContactContent(lang) {
-  const isItalian = (lang === 'IT');
-  const content = isItalian ? contactIT : contactEN;
+  const content = (lang === 'IT') ? contactIT : contactEN;
 
-  if (contactTextEl) {
-    contactTextEl.classList.remove('fade-in');
-    contactTextEl.classList.add('fade-out');
-  }
+  const elements = [contactTitle, contactNote, contactTextEl, contactMailtoBtn];
+
+  elements.forEach(el => {
+    if (el) {
+      el.classList.remove('fade-in');
+      el.classList.add('fade-out');
+    }
+  });
 
   setTimeout(() => {
-    if (contactTextEl) contactTextEl.innerHTML = content.text;
     if (contactTitle) contactTitle.textContent = content.title;
     if (contactNote) contactNote.textContent = content.note;
-    if (contactLabel) contactLabel.textContent = lang;
+    if (contactTextEl) contactTextEl.innerHTML = content.text;
     if (contactMailtoBtn) contactMailtoBtn.innerHTML = `${content.button} ${contactMailBtnIconHTML}`;
+    if (contactLabel) contactLabel.textContent = lang;
 
-    if (contactTextEl) {
-      contactTextEl.classList.remove('fade-out');
-      contactTextEl.classList.add('fade-in');
-    }
-  }, 180);
+    elements.forEach(el => {
+      if (el) {
+        el.classList.remove('fade-out');
+        el.classList.add('fade-in');
+      }
+    });
+  }, 350); 
 }
+
+
+
 
 function setLanguage(lang) {
   if (!lang) return;
@@ -389,14 +397,18 @@ function setLanguage(lang) {
 
   applyLanguage(lang);
 
-  if (aboutText) {
-    aboutText.style.opacity = 0;
+if (aboutText) {
+    aboutText.classList.remove('fade-in');
+    aboutText.classList.add('fade-out');
+
     setTimeout(() => {
       aboutText.innerHTML = (lang === 'IT' ? aboutIT_HTML : aboutEN_HTML);
       if (aboutLabel) aboutLabel.textContent = lang;
-      aboutText.style.opacity = 1;
-    }, 180);
-  }
+      aboutText.classList.remove('fade-out');
+      aboutText.classList.add('fade-in');
+    }, 350);
+}
+
 
   applyContactContent(lang);
 
