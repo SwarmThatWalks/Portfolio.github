@@ -29,39 +29,24 @@ const emailAddress = 'francescopresti29@hotmail.it';
 const contactEmailText = document.getElementById('contactEmailText');
 const copyEmailBtn = document.getElementById('copyEmailBtn');
 const contactMailtoBtn = document.getElementById('contactMailtoBtn');
+const contactMailBtnIconHTML = contactMailtoBtn ? (contactMailtoBtn.querySelector('.btn-icon')?.outerHTML || '') : '';
 
 const contactEN = {
   title: "Contact Me",
   button: "Send Email",
   note: "Press the button above to open your email app.",
-  text: `
-    <p>
-      The easiest way to reach me is by email.
-    </p>
-  `
+  text: `<p>The easiest way to reach me is by email.</p>`
 };
 
 const contactIT = {
   title: "Contattami",
   button: "Invia Email",
   note: "Premi il pulsante qui sopra per aprire la tua app email.",
-  text: `
-    <p>
-      Il modo più semplice per contattarmi è tramite email.
-    </p>
-  `
+  text: `<p>Il modo più semplice per contattarmi è tramite email.</p>`
 };
 
-const contactEN_HTML = `
-    <p>
-      The easiest way to reach me is by email.
-    </p>
-  `;
-const contactIT_HTML = `
-    <p>
-      Il modo più semplice per contattarmi è tramite email.
-    </p>
-  `;
+const contactEN_HTML = contactEN.text;
+const contactIT_HTML = contactIT.text;
 
 const aboutIT_HTML = `
 <p>Mi adatto a diversi contesti professionali e lavoro in modo positivo con il team. 
@@ -79,8 +64,7 @@ dell’esperienza utente. Ho inoltre svolto attività di gestione e organizzazio
 <p>In ambito operativo, ho lavorato in cucina supportando la preparazione dei piatti, il lavaggio delle stoviglie, 
 la pulizia del ristorante e il servizio ai tavoli. Sia in turno diurno che notturno.</p>
 
-<p>  Questo è il primo sito web che ho realizzato interamente tramite codice utilizzando <span class="skill">Visual Studio Code</span>, sviluppato principalmente per sperimentare e mettere alla prova le mie competenze.
-</p>
+<p>Questo è il primo sito web che ho realizzato interamente tramite codice utilizzando <span class="skill">Visual Studio Code</span>, sviluppato principalmente per sperimentare e mettere alla prova le mie competenze.</p>
 `;
 
 const aboutEN_HTML = `
@@ -105,7 +89,6 @@ and serving tables, both during day and night shifts.</p>
 aboutText.innerHTML = aboutEN_HTML;
 aboutLabel.textContent = 'EN';
 aboutSwitch.checked = false;
-
 contactTextEl.innerHTML = contactEN_HTML;
 contactLabel.textContent = 'EN';
 
@@ -124,39 +107,25 @@ if (closeMobileWarning && mobileWarning) {
   });
 }
 
-aboutSwitch.addEventListener('change', () => {
-  aboutText.style.opacity = 0;
-
-  setTimeout(() => {
-    aboutText.innerHTML = aboutSwitch.checked ? aboutIT_HTML : aboutEN_HTML;
-    aboutLabel.textContent = aboutSwitch.checked ? 'IT' : 'EN';
-    aboutText.style.opacity = 1;
-  }, 200);
-});
-
 const resumeFiles = {
   EN: 'assets/CV/CV_Presti_Francesco_ENG.pdf',
   IT: 'assets/CV/CV_Presti_Francesco_ITA.pdf'
 };
 
-function updateResume() {
+function updateResume(lang) {
+  if (!resumeIframe) return;
   resumeIframe.style.opacity = 0;
+  const currentLang = (lang || (cvSwitch.checked ? 'IT' : 'EN'));
+  cvSwitch.addEventListener("change", () => {
+  setLanguage(cvSwitch.checked ? "IT" : "EN");
+});
 
-  const lang = cvSwitch.checked ? 'IT' : 'EN';
-  cvLabel.textContent = lang;
-
-  resumeIframe.src = resumeFiles[lang];
-
-  const fadeDelay = 50;
+  cvLabel.textContent = currentLang;
+  resumeIframe.src = resumeFiles[currentLang];
   setTimeout(() => {
     resumeIframe.style.opacity = 1;
-  }, fadeDelay);
+  }, 50);
 }
-
-cvSwitch.checked = false;
-updateResume();
-
-cvSwitch.addEventListener('change', updateResume);
 
 closeButtons.forEach(btn => {
   btn.addEventListener('click', e => {
@@ -196,39 +165,30 @@ allButtons.forEach(btn => {
 
 function glowSequence() {
   letters.forEach(letter => letter.classList.remove('glow'));
-
   letters.forEach((letter, index) => {
     setTimeout(() => {
       letter.classList.add('glow');
-
       if (index > 0) letters[index - 1].classList.remove('glow');
-
       if (index === letters.length - 1) {
         setTimeout(() => {
           letter.classList.remove('glow');
         }, delay);
       }
-
     }, index * delay);
   });
 }
-
 setTimeout(glowSequence, initialDelay);
-
 setInterval(glowSequence, repeatDelay);
 
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
   if (!modal) return;
-
   overlay.style.display = 'block';
   overlay.setAttribute('aria-hidden', 'false');
-
   modal.style.display = 'flex';
   modal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
   document.body.style.overflow = 'hidden';
-
   setTimeout(() => {
     const focusable = modal.querySelector('button, a, input, textarea');
     if (focusable) focusable.focus();
@@ -237,14 +197,11 @@ function openModal(modalId) {
 
 function closeModal(modal) {
   if (!modal || modal.classList.contains('closing')) return;
-
   modal.classList.add('closing');
-
   modal.addEventListener('animationend', function handler() {
     modal.classList.remove('closing');
     modal.style.display = 'none';
     modal.setAttribute('aria-hidden', 'true');
-
     const anyOpen = Array.from(modals).some(m => m.style.display === 'flex');
     if (!anyOpen) {
       overlay.classList.remove('closing');
@@ -253,7 +210,6 @@ function closeModal(modal) {
       document.body.classList.remove('modal-open');
       document.body.style.overflow = '';
     }
-
     modal.removeEventListener('animationend', handler);
     if (modalAnimating) {
       modalAnimating = false;
@@ -264,10 +220,8 @@ function closeModal(modal) {
 
 function processModalQueue() {
   if (modalAnimating || modalQueue.length === 0) return;
-
   const nextModalId = modalQueue.shift();
   const currentOpen = Array.from(modals).find(m => m.style.display === 'flex');
-
   if (currentOpen) {
     modalAnimating = true;
     closeModal(currentOpen);
@@ -294,25 +248,6 @@ modalButtons.forEach(btn => {
   });
 });
 
-closeButtons.forEach(btn => {
-  btn.addEventListener('click', e => {
-    const modal = btn.closest('.modal');
-    closeModal(modal);
-  });
-});
-
-overlay.addEventListener('click', () => {
-  modals.forEach(m => {
-    if (m.style.display === 'flex') closeModal(m);
-  });
-});
-
-modals.forEach(modal => {
-  modal.addEventListener('click', e => {
-    if (e.target === modal) closeModal(modal);
-  });
-});
-
 window.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     modals.forEach(m => {
@@ -324,31 +259,6 @@ window.addEventListener('keydown', e => {
 linkedinBtn.addEventListener('click', () => {
   window.open('https://www.linkedin.com/in/francesco-presti-swarm/', '_blank', 'noopener,noreferrer');
 });
-
-function toggleContactLang() {
-  contactTextEl.classList.remove('fade-in');
-  contactTextEl.classList.add('fade-out');
-
-  setTimeout(() => {
-    const isItalian = contactSwitch.checked;
-    const content = isItalian ? contactIT : contactEN;
-
-    contactTextEl.innerHTML = content.text;
-    contactTitle.textContent = content.title;
-    contactMailtoBtn.textContent = content.button;
-    contactNote.textContent = content.note;
-    contactLabel.textContent = isItalian ? 'IT' : 'EN';
-
-    contactTextEl.classList.remove('fade-out');
-    contactTextEl.classList.add('fade-in');
-
-  }, 250);
-}
-
-contactSwitch.checked = false;
-toggleContactLang();
-
-contactSwitch.addEventListener('change', toggleContactLang);
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -376,10 +286,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(t);
         setTimeout(() => t.remove(), 900);
 
-        if (typeof clickSound !== 'undefined') {
-          clickSound.currentTime = 0;
-          clickSound.play().catch(()=>{});
-        }
+        clickSound.currentTime = 0;
+        clickSound.play().catch(()=>{});
+        
       } catch (err) {
         console.warn('Clipboard copy failed', err);
       }
@@ -388,21 +297,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (contactMailtoBtn) {
     contactMailtoBtn.addEventListener('click', () => {
-      if (typeof clickSound !== 'undefined') {
-        clickSound.currentTime = 0;
-        clickSound.play().catch(()=>{});
-      }
+      clickSound.currentTime = 0;
+      clickSound.play().catch(()=>{});
       window.location.href = `mailto:${emailAddress}`;
     });
   }
 });
-
-
-
-
-
-
-
 
 const muteToggle = document.getElementById("muteToggle");
 let isMuted = localStorage.getItem("muted") === "true" ? true : false;
@@ -425,15 +325,15 @@ muteToggle.addEventListener("change", () => {
 
 updateMuteState();
 
-
-
-
 const langToggle = document.getElementById("langToggle");
 const langLabel = document.querySelector(".lang-text");
 const homeButtons = document.querySelectorAll(".buttons .btn:not(.link-icon)");
 
 let currentLang = localStorage.getItem("lang") || "EN";
 localStorage.setItem("lang", currentLang); 
+
+cvSwitch.checked = (currentLang === 'IT');
+updateResume(currentLang);
 
 const translations = {
     EN: ["About Me", "Resume", "Contact Me"],
@@ -452,59 +352,71 @@ function applyLanguage(lang) {
         langLabel.style.opacity = 1;
         homeButtons.forEach(btn => btn.style.opacity = 1);
     }, 200);
+}
 
-    localStorage.setItem("lang", lang);
+function applyContactContent(lang) {
+  const isItalian = (lang === 'IT');
+  const content = isItalian ? contactIT : contactEN;
+
+  if (contactTextEl) {
+    contactTextEl.classList.remove('fade-in');
+    contactTextEl.classList.add('fade-out');
+  }
+
+  setTimeout(() => {
+    if (contactTextEl) contactTextEl.innerHTML = content.text;
+    if (contactTitle) contactTitle.textContent = content.title;
+    if (contactNote) contactNote.textContent = content.note;
+    if (contactLabel) contactLabel.textContent = lang;
+    if (contactMailtoBtn) contactMailtoBtn.innerHTML = `${content.button} ${contactMailBtnIconHTML}`;
+
+    if (contactTextEl) {
+      contactTextEl.classList.remove('fade-out');
+      contactTextEl.classList.add('fade-in');
+    }
+  }, 180);
 }
 
 function setLanguage(lang) {
-    langToggle.checked = (lang === "IT");
-    aboutSwitch.checked = (lang === "IT");
-    contactSwitch.checked = (lang === "IT");
+  if (!lang) return;
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
 
-    applyLanguage(lang);
+  langToggle.checked = (lang === 'IT');
+  aboutSwitch.checked = (lang === 'IT');
+  contactSwitch.checked = (lang === 'IT');
+  cvSwitch.checked = (lang === 'IT');
 
+  applyLanguage(lang);
+
+  if (aboutText) {
     aboutText.style.opacity = 0;
     setTimeout(() => {
-        aboutText.innerHTML = (lang === "IT" ? aboutIT_HTML : aboutEN_HTML);
-        aboutLabel.textContent = lang;
-        aboutText.style.opacity = 1;
-    }, 200);
+      aboutText.innerHTML = (lang === 'IT' ? aboutIT_HTML : aboutEN_HTML);
+      if (aboutLabel) aboutLabel.textContent = lang;
+      aboutText.style.opacity = 1;
+    }, 180);
+  }
 
-    toggleContactLang(); 
+  applyContactContent(lang);
+
+  updateResume(lang);
 }
 
-setLanguage(currentLang);
-
 langToggle.addEventListener("change", () => {
-    const lang = langToggle.checked ? "IT" : "EN";
-    setLanguage(lang);
+  setLanguage(langToggle.checked ? "IT" : "EN");
 });
 
 aboutSwitch.addEventListener("change", () => {
-    const lang = aboutSwitch.checked ? "IT" : "EN";
-    setLanguage(lang);
+  setLanguage(aboutSwitch.checked ? "IT" : "EN");
 });
 
 contactSwitch.addEventListener("change", () => {
-    const lang = contactSwitch.checked ? "IT" : "EN";
-    setLanguage(lang);
+  setLanguage(contactSwitch.checked ? "IT" : "EN");
 });
 
-window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader");
+setLanguage(currentLang);
 
-    if (preloader) {
-        preloader.style.opacity = '1';
-        preloader.style.transition = 'opacity 0.6s ease';
-
-        setTimeout(() => {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 600);
-        }, 300);
-    }
-});
 const preloader = document.getElementById("preloader");
 const bgVideo = document.getElementById("bgVideo");
 
@@ -523,12 +435,11 @@ function hidePreloader() {
 }
 
 if (bgVideo) {
-    
-    bgVideo.addEventListener('canplaythrough', () => {
+    if (bgVideo.readyState >= 4) { 
         hidePreloader();
-    });
+    } else {
+        bgVideo.addEventListener('canplaythrough', hidePreloader);
+    }
 } else {
     window.addEventListener("load", hidePreloader);
 }
-
-
