@@ -472,7 +472,7 @@ input:checked + .slider::before {
   align-items: center;
   text-align: center;
   gap: 8px;
-  padding-top: 51px;
+  padding-top: 5px;
   
 }
 
@@ -591,13 +591,6 @@ input:checked + .slider::before {
 .fade-element-contact-btn {
   transition: opacity 0.32s ease; 
 }
-
-
-.modal-icon {
-
-   margin-bottom: -25px; 
-  }
-
 
 
 #contactModal .modal-inner {
