@@ -49,41 +49,51 @@ const contactEN_HTML = contactEN.text;
 const contactIT_HTML = contactIT.text;
 
 const aboutIT_HTML = `
-<p>Mi adatto a diversi contesti professionali e lavoro in modo positivo con il team. 
-Ho un’ottima padronanza del computer, ho esperienza nello sviluppo software e web 
-(<span class="skill">PHP</span>, <span class="skill">WordPress</span>), competenze intermedie in Office 
-(<span class="skill">Word</span>, <span class="skill">Excel</span>, <span class="skill">PowerPoint</span>), 
-abilità medio-alte in <span class="skill">graphic design</span> e <span class="skill">video editing</span> 
-(in particolare con <span class="skill">Adobe After Effects</span> e <span class="skill">Premiere Pro</span>). 
-Disponibile per attività manuali e operative.</p>
+<p>
+Sono una persona versatile e operativa, capace di adattarmi a diversi contesti professionali e di lavorare in squadra. 
+Sono diplomato in <span class="skill">Informatica e Telecomunicazioni </span>e, nel corso degli anni scolastici, ho coltivato per passione competenze in grafica e montaggio video, 
+in particolare con <span class="skill">Adobe After Effects</span>.
+</p>
 
-<p>Nel corso delle mie precedenti esperienze, mi sono occupato della revisione e dello sviluppo di siti web in 
-<span class="skill">WordPress</span>, con particolare attenzione al miglioramento dell’interfaccia grafica e 
-dell’esperienza utente. Ho inoltre svolto attività di gestione e organizzazione dati tramite <span class="skill">Excel</span> e <span class="skill">Word</span>.</p>
+<p>
+Ho esperienza nello sviluppo web e software (<span class="skill">PHP</span>,<span class="skill">WordPress</span>), 
+competenze intermedie in Office (<span class="skill">Word</span>,<span class="skill"> Excel</span>,<span class="skill"> PowerPoint</span>) e abilità medio-alte in graphic design e video editing (<span class="skill">Adobe After Effects</span> e <span class="skill">Premiere Pro</span>).
+Sono inoltre disponibile per <span class="skill">attività manuali e operative</span>.
+</p>
 
-<p>In ambito operativo, ho lavorato in cucina supportando la preparazione dei piatti, il lavaggio delle stoviglie, 
-la pulizia del ristorante e il servizio ai tavoli. Sia in turno diurno che notturno.</p>
-
-<p>Questo è il primo sito web che ho realizzato interamente tramite codice utilizzando <span class="skill">Visual Studio Code</span>, sviluppato principalmente per sperimentare e mettere alla prova le mie competenze.</p>
-`;
+<p>
+Durante il periodo scolastico ho lavorato come <span class="skill">cameriere</span> e <span class="skill">aiuto cuoco</span> in un ristorante, 
+occupandomi di preparazione dei piatti, servizio ai tavoli, lavaggio stoviglie e pulizia del locale, sia in turni diurni che notturni.
+</p>
+<p>
+Ho realizzato questo portfolio web da zero utilizzando <span class="skill">Visual Studio Code</span>, 
+sviluppandolo principalmente per sperimentare e mettere alla prova le mie competenze. 
+Ho anche collaborato alla revisione e allo sviluppo di siti <span class="skill">WordPress</span>, curando interfaccia grafica, user experience e gestione dati.
+</p>`;
 
 const aboutEN_HTML = `
-<p>I adapt to different professional environments and work positively with the team. 
-I have excellent computer skills, experience in software and web development 
-(<span class="skill">PHP</span>, <span class="skill">WordPress</span>), intermediate skills in Office 
-(<span class="skill">Word</span>, <span class="skill">Excel</span>, <span class="skill">PowerPoint</span>), 
-and medium-high skills in <span class="skill">graphic design</span> and <span class="skill">video editing</span> 
-(specifically with <span class="skill">Adobe After Effects</span> and <span class="skill">Premiere Pro</span>). 
-Available for manual and operational activities.</p>
+<p>
+I am a versatile and hands-on person, able to adapt to different professional environments and work effectively in a team. 
+I hold a diploma in <span class="skill">Computer Science and Telecommunications</span>, and throughout my school years, I developed a passion for skills in graphic design and video editing, 
+particularly with <span class="skill">Adobe After Effects</span>.
+</p>
 
-<p>During my previous experiences, I have worked on reviewing and developing WordPress websites, 
-focusing on improving graphic interfaces and user experience. I have also managed and organized data via 
-<span class="skill">Excel</span> and <span class="skill">Word</span>.</p>
+<p>
+I have experience in web and software development (<span class="skill">PHP</span>, <span class="skill">WordPress</span>), 
+intermediate skills in Office (<span class="skill">Word</span>, <span class="skill">Excel</span>, <span class="skill">PowerPoint</span>), and medium-to-advanced abilities in graphic design and video editing (<span class="skill">Adobe After Effects</span> and <span class="skill">Premiere Pro</span>).
+I am also available for <span class="skill">manual and operational tasks</span>.
+</p>
 
-<p>In practical contexts, I worked in kitchens supporting food preparation, dishwashing, cleaning the restaurant, 
-and serving tables, both during day and night shifts.</p>
+<p>
+During my school years, I worked as a <span class="skill">waiter</span> and <span class="skill">kitchen assistant</span> in a restaurant, 
+handling dish preparation, table service, dishwashing, and cleaning, both during day and night shifts.
+</p>
 
-<p>This is the first website I have developed entirely using code with <span class="skill">Visual Studio Code</span>, created primarily to experiment and put my skills to the test.</p>
+<p>
+I built this web portfolio from scratch using <span class="skill">Visual Studio Code</span>, 
+mainly to experiment and test my skills. 
+I have also collaborated on the revision and development of <span class="skill">WordPress</span> websites, focusing on graphical interface, user experience, and data management.
+</p>
 `;
 
 aboutText.innerHTML = aboutEN_HTML;
