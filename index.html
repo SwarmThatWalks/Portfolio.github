@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francesco Presti | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="preloader">
+  <div class="spinner"></div>
+</div>
+
+<video id="bgVideo" class="bg-video" autoplay muted loop>
+  <source src="assets/img/background.mp4" type="video/mp4">
+</video>
+
+<header class="header-container">
+    <h1 id="glow-text">
+        <span>F</span><span>R</span><span>A</span><span>N</span><span>C</span><span>E</span><span>S</span><span>C</span><span>O</span>
+        <span>&nbsp;</span>
+        <span>P</span><span>R</span><span>E</span><span>S</span><span>T</span><span>I</span>
+    </h1>
+
+    <div class="settings-group">
+        <div class="toggle-container">
+            <input type="checkbox" id="langToggle" class="toggle-input">
+            <label for="langToggle" class="toggle-slider"></label>
+            <span class="toggle-label lang-text">EN</span>
+        </div>
+        <div class="toggle-container">
+            <input type="checkbox" id="muteToggle" class="toggle-input">
+            <label for="muteToggle" class="toggle-slider"></label>
+            <span class="toggle-label sound-label">Sound</span>
+        </div>
+    </div>
+</header>
+
+<div class="main-layout">
+    
+    <div class="content-area">
+        
+        <div id="about-panel" class="content-panel active">
+            <div class="title-with-icon">
+                <img src="assets/img/aboutme.webp" class="title-icon" alt="About Icon">
+                <h2 id="about-title">About Me</h2>
+            </div>
+            <div class="scroll-hint" id="scroll-hint">scroll to see more</div>
+            <div class="text-wrapper" id="about-content">
+                
+            </div>
+        </div>
+
+        <div id="resume-panel" class="content-panel">
+            <div class="title-with-icon">
+                <img src="assets/img/User_Square.webp" class="title-icon" alt="Resume Icon">
+                <h2 id="resume-title">Resume</h2>
+            </div>
+            <div class="text-wrapper">
+                <iframe id="resumeIframe" src="assets/CV/CV_Presti_Francesco_ENG.pdf" title="Resume"></iframe>
+            </div>
+        </div>
+
+        <div id="contact-panel" class="content-panel">
+            <div class="title-with-icon">
+                <img src="assets/img/contactme.webp" class="title-icon" alt="Contact Icon">
+                <h2 id="contact-title">Contact Me</h2>
+            </div>
+            <div class="text-wrapper">
+                <div id="contact-desc"></div>
+                <div class="contact-details">
+                    <div class="email-row">
+                        <span class="email-text">francescopresti29@hotmail.it</span>
+                        <button id="copyEmailBtn" class="copy-btn" title="Copy Email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <a href="mailto:francescopresti29@hotmail.it" id="sendEmailBtn" class="send-email-btn">
+                        <span class="btn-text">Send Email</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <line x1="22" y1="2" x2="11" y2="13"></line>
+                          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </a>
+                    
+                    <p id="contact-note" style="font-size:12px; color:#888; margin-top:10px;"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="nav-container">
+        <nav class="nav-menu">
+            <div class="nav-item active" data-target="about-panel">About Me</div>
+            <div class="nav-item" data-target="resume-panel">Resume</div>
+            <div class="nav-item" data-target="contact-panel">Contact Me</div>
+        </nav>
+        <a href="https://www.linkedin.com/in/francesco-presti-swarm" target="_blank" class="linkedin-link">
+            <img src="assets/img/linkedin_logo.webp" class="linkedin-icon" alt="LinkedIn">
+        </a>
+    </div>
+
+</div>
+
+<div class="dev-warning" id="mobileWarning">
+  <span id="warning-text">⚠️ Optimized for desktop. Mobile features a simplified layout.</span>
+  <button class="close-warning" id="closeMobileWarning">&times;</button>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <span>© 2025 By Francesco Presti</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
