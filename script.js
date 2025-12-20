@@ -40,7 +40,7 @@ const aboutTextData = {
         <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover;">
         <div>
             <h3 style="margin:0 0 5px 0; color:#fff;">Francesco Presti</h3>
-            <p style="margin:0; font-size:14px; color:#aaa;">Software & Web Development | Graphic Design</p>
+            <p style="margin:0; font-size:12px; color:#aaa;">Software & Web Development | Graphic Design</p>
         </div>
     </div>
     <p>I am a versatile and hands-on person, able to adapt to different professional environments and work effectively in a team. I hold a diploma in <span class="skill">Computer Science and Telecommunications</span>, and throughout my school years, I developed a passion for skills in graphic design and video editing, particularly with <span class="skill">Adobe After Effects</span>.</p>
@@ -336,4 +336,5 @@ if (bgVideo) {
     }
 } else {
     window.addEventListener("load", hidePreloader);
+
 }
