@@ -50,7 +50,7 @@ const aboutTextData = {
     `,
     IT: `
     <div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:20px;">
-        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover;">
+        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover; background: rgb(255, 255, 255); border: 2px solid rgba(68, 67, 67, 0.18);">
         <div>
             <h3 style="margin:0 0 5px 0; color:#fff;">Francesco Presti</h3>
             <p style="margin:0; font-size:14px; color:#aaa;">Sviluppo Software & Web | Graphic Design</p>
@@ -338,4 +338,5 @@ if (bgVideo) {
     window.addEventListener("load", hidePreloader);
 
 }
+
 
