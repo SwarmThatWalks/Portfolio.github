@@ -131,7 +131,6 @@ body {
 .toggle-slider {
     width: 40px;
     height: 20px;
-    background: rgba(255, 255, 255, .15);
     border-radius: 20px;
     position: relative;
     cursor: pointer;
@@ -578,7 +577,7 @@ footer {
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .nav-menu {
+   .nav-menu {
         width: 100%;
         flex-direction: row;
         justify-content: space-evenly;
@@ -588,30 +587,27 @@ footer {
         opacity: 1;
     }
 
-    .nav-item {
-        font-size: 11px;
-        transform: none !important;
-        padding: 6px 10px;
-        border-radius: 20px;
-        transition: background 0.3s ease, color 0.3s ease, opacity 0.3s ease;
-        text-shadow: none !important;
-        font-weight: 500;
+    .nav-item { 
+        font-size: 11px; 
+        color: rgba(255,255,255,0.4);
+        padding: 8px 12px; 
+        border-radius: 25px; 
+        transition: all 0.3s ease;
     }
 
-    .nav-item:hover {
-        transform: none !important;
+    .nav-item:hover { transform: none; text-shadow: none; }
+
+    .nav-item.active { 
+        font-weight: bold;
+        font-size: 15px; 
+        background: rgba(255, 255, 255, 0.1); 
+        color: #fff; 
+        transform: none;
+        text-shadow: none;
     }
 
-    .nav-item.active {
-        font-size: 11px;
-        transform: none !important;
-        background: rgba(255,255,255,0.15);
-        color: #fff;
-        box-shadow: none;
-    }
-
-    .nav-item::after {
-        display: none;
+    .nav-item::after { 
+        display: none !important; 
     }
 
     .linkedin-link {
