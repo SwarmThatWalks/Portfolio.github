@@ -37,10 +37,10 @@ const navTranslations = {
 const aboutTextData = {
     EN: `
     <div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:20px;">
-        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover; background: rgb(255, 255, 255); border: 2px solid rgba(68, 67, 67, 0.18);">
+        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover;">
         <div>
             <h3 style="margin:0 0 5px 0; color:#fff;">Francesco Presti</h3>
-            <p style="margin:0; font-size:12px; color:#aaa;">Software & Web Development | Graphic Design</p>
+            <p style="margin:0; font-size:14px; color:#aaa;">Software & Web Development | Graphic Design</p>
         </div>
     </div>
     <p>I am a versatile and hands-on person, able to adapt to different professional environments and work effectively in a team. I hold a diploma in <span class="skill">Computer Science and Telecommunications</span>, and throughout my school years, I developed a passion for skills in graphic design and video editing, particularly with <span class="skill">Adobe After Effects</span>.</p>
@@ -50,7 +50,7 @@ const aboutTextData = {
     `,
     IT: `
     <div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:20px;">
-        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover; background: rgb(255, 255, 255); border: 2px solid rgba(68, 67, 67, 0.18);">
+        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover;">
         <div>
             <h3 style="margin:0 0 5px 0; color:#fff;">Francesco Presti</h3>
             <p style="margin:0; font-size:14px; color:#aaa;">Sviluppo Software & Web | Graphic Design</p>
@@ -95,6 +95,14 @@ const resumeFiles = {
 
 const bgVideo = document.getElementById('bgVideo');
 let speedAnimFrame;
+
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        bgVideo.pause();
+    } else {
+        bgVideo.play();
+    }
+});
 
 function burstVideo() {
     cancelAnimationFrame(speedAnimFrame);
@@ -336,7 +344,4 @@ if (bgVideo) {
     }
 } else {
     window.addEventListener("load", hidePreloader);
-
 }
-
-
