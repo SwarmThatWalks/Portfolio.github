@@ -37,7 +37,7 @@ const navTranslations = {
 const aboutTextData = {
     EN: `
     <div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:20px;">
-        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover;">
+        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover; background: white;">
         <div>
             <h3 style="margin:0 0 5px 0; color:#fff;">Francesco Presti</h3>
             <p style="margin:0; font-size:14px; color:#aaa;">Software & Web Development | Graphic Design</p>
@@ -50,7 +50,7 @@ const aboutTextData = {
     `,
     IT: `
     <div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:20px;">
-        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover;">
+        <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover; background: white;">
         <div>
             <h3 style="margin:0 0 5px 0; color:#fff;">Francesco Presti</h3>
             <p style="margin:0; font-size:14px; color:#aaa;">Sviluppo Software & Web | Graphic Design</p>
@@ -345,3 +345,4 @@ if (bgVideo) {
 } else {
     window.addEventListener("load", hidePreloader);
 }
+
