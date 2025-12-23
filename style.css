@@ -53,24 +53,37 @@ body {
 #preloader {
   position: fixed;
   inset: 0;
-  background: #313131;
+  background: #000;
   z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 6px solid rgba(0,0,0,0.1);
-  border-top-color: #6200ff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.preloader-text {
+  font-family: 'OutfitBold', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  position: relative;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  user-select: none;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.preloader-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fff;
+  -webkit-text-stroke: 1px #fff;
+  width: var(--load-percent, 0%);
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.7));
 }
 
 .header-container {
@@ -151,7 +164,7 @@ body {
 }
 
 .toggle-input:checked + .toggle-slider {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(96, 53, 249, 0.39);
 }
 
 .toggle-input:checked + .toggle-slider::after {
@@ -759,4 +772,3 @@ footer {
         color: #999;
     }
 }
-
