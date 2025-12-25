@@ -58,18 +58,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
 .preloader-text {
   font-family: 'OutfitBold', sans-serif;
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 800;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.05);
   position: relative;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   text-transform: uppercase;
   user-select: none;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .preloader-text::after {
@@ -78,12 +80,11 @@ body {
   left: 0;
   top: 0;
   color: #fff;
-  -webkit-text-stroke: 1px #fff;
   width: var(--load-percent, 0%);
   overflow: hidden;
   white-space: nowrap;
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.7));
+  transition: width 0.1s linear;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.8));
 }
 
 .header-container {
@@ -95,7 +96,7 @@ body {
     align-items: center;
     gap: 40px;
     opacity: 0;
-    animation: fadeInHeader 1s ease forwards 0.5s;
+    animation: fadeInHeader 1.5s ease forwards 0.5s;
 }
 
 @keyframes fadeInHeader {
@@ -113,17 +114,15 @@ body {
 }
 
 #glow-text span {
-    color: #ffffff;
-    transition: color 0.6s ease, text-shadow 0.6s ease;
+    color: rgba(255, 255, 255, 0.4);
+    transition: all 0.6s ease;
+    display: inline-block;
 }
 
-.glow {
-  color: #ffffff;
-  text-shadow:
-    0 0 8px #ffffff,
-    0 0 16px #ffffff,
-    0 0 24px #ffffff,
-    0 0 40px #ffffff;
+#glow-text span.glow {
+  color: #ffffff !important;
+  text-shadow: 0 0 15px #fff, 0 0 30px rgba(255,255,255,0.6);
+  transform: scale(1.1);
 }
 
 .settings-group {
@@ -211,8 +210,6 @@ body {
     flex-direction: column;
     justify-content: center;
     max-height: 80vh;
-    transition: backdrop-filter 0.2s;
-    backdrop-filter: blur(4px) opacity(0);
     border-radius: 46px;
     transition: opacity 0.4s ease;
 }
@@ -220,7 +217,6 @@ body {
 .content-panel.active {
     opacity: 1;
     pointer-events: auto;
-    backdrop-filter: blur(4px) opacity(1);
 }
 
 .title-with-icon {
@@ -229,7 +225,6 @@ body {
     gap: 20px;
     margin-bottom: 24px;
     padding-left: 30px;
-    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .title-icon {
@@ -252,7 +247,6 @@ body {
     color: #fff;
     margin: 0;
     text-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: opacity 0.4s ease;
 }
 
 .scroll-hint {
@@ -284,8 +278,15 @@ body {
     overflow-y: auto;
 }
 
-.no-scroll {
-    overflow-y: hidden !important;
+.resume-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: fit-content;
+    overflow: hidden;
+    max-height: 75vh;
 }
 
 .text-wrapper::-webkit-scrollbar {
@@ -326,11 +327,7 @@ body {
     font-weight: 300;
     color: rgba(255,255,255,0.4);
     cursor: pointer;
-    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                text-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     user-select: none;
     display: flex;
@@ -345,10 +342,7 @@ body {
 
 .nav-item.active {
     color: #ffffff;
-    font-weight: 600;
     font-size: 44px;
-    transform: translateX(-10px);
-    text-shadow: 0 0 15px rgba(255,255,255,0.3);
 }
 
 .nav-item::after {
@@ -373,13 +367,12 @@ body {
 .linkedin-link {
     opacity: 0;
     animation: fadeInNav 1s ease forwards 1s;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: transform 0.3s ease;
     margin-right: 40px;
 }
 
 .linkedin-link:hover {
     transform: scale(1.1);
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
 }
 
 .linkedin-icon {
@@ -391,16 +384,6 @@ body {
 .skill {
     color: #af92ff;
     font-weight: 600;
-}
-
-#resumeIframe {
-    width: 100%;
-    height: 500px;
-    border: none;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.05);
-    transition: opacity 0.4s ease;
-    
 }
 
 .contact-details {
@@ -453,7 +436,7 @@ body {
     font-weight: 700;
     text-decoration: none;
     width: fit-content;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s;
 }
 
 .send-email-btn:hover {
@@ -505,7 +488,6 @@ footer {
   font-size: 13px;
   backdrop-filter: blur(10px);
   z-index: 999;
-  transition: opacity 0.4s ease, transform 0.2s ease;
   width: 90%;
   max-width: 400px;
   text-align: center;
@@ -523,6 +505,46 @@ footer {
     cursor: pointer;
     font-size: 18px;
     padding: 0 4px;
+}
+
+.cv-preview {
+    max-height: 52vh;
+    width: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.simple-download-btn {
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-family: 'OutfitBold', sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.simple-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.4);
+}
+
+.lang-fade {
+    animation: langFadeEffect 0.5s ease forwards;
+}
+
+@keyframes langFadeEffect {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @media (max-width: 900px) {
@@ -550,7 +572,6 @@ footer {
         align-items: center;
         width: 100%;
         background: rgba(0,0,0,0.5);
-        border-bottom: 1px solid rgba(255,255,255,0.05);
         height: 80px; 
     }
 
@@ -558,23 +579,17 @@ footer {
         font-size: 20px;
     }
 
-    .settings-group {
-        gap: 15px;
-        transform: scale(0.9);
-    }
-
     .main-layout {
         flex-direction: column;
         justify-content: center;
-        padding: 90px 15px 75px 15px;
-        height: 90%;
+        padding: 90px 15px 95px 15px;
+        height: 100%;
         width: 100%;
-        gap: 0;
     }
     
     .nav-container {
         position: fixed;
-        bottom: 45px;
+        bottom: 50px;
         left: 50%;
         transform: translateX(-50%);
         width: 95%;
@@ -588,7 +603,6 @@ footer {
         padding: 8px 6px;
         z-index: 500;
         height: 44px;
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
    .nav-menu {
@@ -603,21 +617,14 @@ footer {
 
     .nav-item { 
         font-size: 11px; 
-        color: rgba(255,255,255,0.4);
         padding: 8px 12px; 
         border-radius: 25px; 
-        transition: all 0.3s ease;
     }
 
-    .nav-item:hover { transform: none; text-shadow: none; }
-
     .nav-item.active { 
-        font-weight: bold;
         font-size: 15px; 
         background: rgba(255, 255, 255, 0.1); 
         color: #fff; 
-        transform: none;
-        text-shadow: none;
     }
 
     .nav-item::after { 
@@ -634,141 +641,103 @@ footer {
         flex: 1;
         margin-left: 0;
         display: flex;
-        overflow: hidden;
         align-items: center;
         justify-content: center;
     }
     
     .content-panel {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: none !important;
-        opacity: 0;
-        display: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
         width: 100%;
-        height: 100%;
-        max-height: none;
+        height: auto;
+        max-height: 70vh;
+        display: none;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
-        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: center;
     }
-    
+
     .content-panel.active {
         display: flex;
-        opacity: 1;
     }
 
     .title-with-icon {
         padding-left: 0;
-        margin-bottom: 5px;
         justify-content: center;
         gap: 8px;
-        flex-shrink: 0;
-    }
-
-    .title-icon {
-        width: 24px;
-        height: 24px;
+        width: 100%;
     }
 
     .content-panel h2 {
         font-size: 20px;
-        text-align: center;
-    }
-
-    .scroll-hint {
-        display: block;
     }
 
     .text-wrapper {
         padding: 15px;
-        flex: 1;
         border-radius: 20px;
         font-size: 13px;
-        background: rgba(10, 10, 10, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        box-shadow: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        overflow-y: auto;
+        width: 100%;
     }
 
     #resume-panel .text-wrapper {
-        padding: 5px; 
-        justify-content: center; 
+        padding: 15px; 
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        overflow: hidden; 
-    }
-
-    #resume-panel .scroll-hint {
-        display: none;
-    }
-
-    #resumeIframe {
-        height: 100%;
+        justify-content: center;
         width: 100%;
-        border-radius: 15px;
-        background: #fff; 
+    }
+
+    .resume-wrapper {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .cv-preview {
+        max-height: 45vh;
+        width: auto;
+        max-width: 100%;
     }
 
     #contact-panel .text-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
+        width: 100%;
     }
 
-    #contact-panel .scroll-hint {
-        display: none;
+    .contact-details {
+        align-items: center;
+        width: 100%;
     }
 
     .email-row {
-        width: 100%;
-        padding: 8px 12px;
         justify-content: center;
-        margin: 0 auto;
-        gap: 15px;
-    }
-
-    .email-text {
-        font-size: 11px;
-        word-break: break-all;
-        flex: none;
-    }
-
-    .copy-btn {
-        flex: none;
-    }
-
-    .send-email-btn {
         width: 100%;
-        margin-top: 10px;
+        max-width: 280px;
     }
 
-    #contact-note {
+    .simple-download-btn {
+        width: 100%;
+        max-width: 200px;
         text-align: center;
-        width: 100%;
     }
 
     footer {
-        display: flex;
-        padding: 8px 15px;
+        padding: 10px 20px;
+        height: 40px;
         justify-content: center;
-        background: rgba(0,0,0,0.8);
     }
 
     .footer-content {
-        font-size: 10px;
-        opacity: 0.6;
+        font-size: 12px;
     }
 
-    .dev-warning {
-        display: flex;
-        bottom: 100px; 
-        font-size: 10px;
-        padding: 6px 12px;
-        width: 90%;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(0, 0, 0, 0.9);
-        color: #999;
+    .preloader-text {
+        font-size: 24px;
+        letter-spacing: 3px;
     }
 }
