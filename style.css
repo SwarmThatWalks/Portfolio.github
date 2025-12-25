@@ -287,6 +287,7 @@ body {
     width: fit-content;
     overflow: hidden;
     max-height: 75vh;
+    margin-left: 25%;
 }
 
 .text-wrapper::-webkit-scrollbar {
@@ -741,3 +742,4 @@ footer {
         letter-spacing: 3px;
     }
 }
+
