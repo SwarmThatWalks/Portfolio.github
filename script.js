@@ -18,7 +18,9 @@ const copyEmailBtn = document.getElementById('copyEmailBtn');
 const aboutContent = document.getElementById('about-content');
 const contactDesc = document.getElementById('contact-desc');
 const contactNote = document.getElementById('contact-note');
-const resumeIframe = document.getElementById('resumeIframe');
+const cvImage = document.getElementById('cvImage');
+const cvDownloadBtn = document.getElementById('cvDownloadBtn');
+const cvDownloadText = cvDownloadBtn.querySelector('span');
 
 const aboutTitle = document.getElementById('about-title');
 const resumeTitle = document.getElementById('resume-title');
@@ -38,28 +40,32 @@ const aboutTextData = {
     EN: `
     <div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:20px;">
         <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover; background: white;">
-        <div>
+        <div style="text-align: left;">
             <h3 style="margin:0 0 5px 0; color:#fff;">Francesco Presti</h3>
             <p style="margin:0; font-size:14px; color:#aaa;">Software & Web Development | Graphic Design</p>
         </div>
     </div>
-    <p>I am a versatile and hands-on person, able to adapt to different professional environments and work effectively in a team. I hold a diploma in <span class="skill">Computer Science and Telecommunications</span>, and throughout my school years, I developed a passion for skills in graphic design and video editing, particularly with <span class="skill">Adobe After Effects</span>.</p>
-    <p>I have experience in web and software development (<span class="skill">PHP</span>, <span class="skill">WordPress</span>), intermediate skills in Office (<span class="skill">Word</span>, <span class="skill">Excel</span>, <span class="skill">PowerPoint</span>), and medium-to-advanced abilities in graphic design and video editing (<span class="skill">Adobe After Effects</span> and <span class="skill">Premiere Pro</span>).</p>
-    <p>During my school years, I worked as a <span class="skill">waiter</span> and <span class="skill">kitchen assistant</span> in a restaurant, handling dish preparation, table service, dishwashing, and cleaning, both during day and night shifts.</p>
-    <p>I built this web portfolio from scratch using <span class="skill">Visual Studio Code</span>, mainly to experiment and test my skills.</p>
+    <div style="text-align: left;">
+        <p>I am a versatile and hands-on person, able to adapt to different professional environments and work effectively in a team. I hold a diploma in <span class="skill">Computer Science and Telecommunications</span>, and throughout my school years, I developed a passion for skills in graphic design and video editing, particularly with <span class="skill">Adobe After Effects</span>.</p>
+        <p>I have experience in web and software development (<span class="skill">PHP</span>, <span class="skill">WordPress</span>), intermediate skills in Office (<span class="skill">Word</span>, <span class="skill">Excel</span>, <span class="skill">PowerPoint</span>), and medium-to-advanced abilities in graphic design and video editing (<span class="skill">Adobe After Effects</span> and <span class="skill">Premiere Pro</span>).</p>
+        <p>During my school years, I worked as a <span class="skill">waiter</span> and <span class="skill">kitchen assistant</span> in a restaurant, handling dish preparation, table service, dishwashing, and cleaning, both during day and night shifts.</p>
+        <p>I built this web portfolio from scratch using <span class="skill">Visual Studio Code</span>, mainly to experiment and test my skills.</p>
+    </div>
     `,
     IT: `
     <div style="display:flex; gap:20px; align-items:flex-start; margin-bottom:20px;">
         <img src="assets/img/foto.webp" style="width:80px; height:80px; border-radius:50%;object-fit:cover; background: white;">
-        <div>
+        <div style="text-align: left;">
             <h3 style="margin:0 0 5px 0; color:#fff;">Francesco Presti</h3>
             <p style="margin:0; font-size:14px; color:#aaa;">Sviluppo Software & Web | Graphic Design</p>
         </div>
     </div>
-    <p>Sono una persona versatile e operativa, capace di adattarmi a diversi contesti professionali e di lavorare in squadra. Sono diplomato in <span class="skill">Informatica e Telecomunicazioni</span> e, nel corso degli anni scolastici, ho coltivato per passione competenze in grafica e montaggio video, in particolare con <span class="skill">Adobe After Effects</span>.</p>
-    <p>Ho esperienza nello sviluppo web e software (<span class="skill">PHP</span>,<span class="skill">WordPress</span>), competenze intermedie in Office (<span class="skill">Word</span>,<span class="skill"> Excel</span>,<span class="skill"> PowerPoint</span>) e abilità medio-alte in graphic design e video editing (<span class="skill">Adobe After Effects</span> e <span class="skill">Premiere Pro</span>).</p>
-    <p>Durante il periodo scolastico ho lavorato come <span class="skill">cameriere</span> e <span class="skill">aiuto cuoco</span> in un ristorante, occupandomi di preparazione dei piatti, servizio ai tavoli, lavaggio stoviglie e pulizia del locale.</p>
-    <p>Ho realizzato questo portfolio web da zero utilizzando <span class="skill">Visual Studio Code</span>, sviluppandolo principalmente per sperimentare e mettere alla prova le mie competenze.</p>
+    <div style="text-align: left;">
+        <p>Sono una persona versatile e operativa, capace di adattarmi a diversi contesti professionali e di lavorare in squadra. Sono diplomato in <span class="skill">Informatica e Telecomunicazioni</span> e, nel corso degli anni scolastici, ho coltivato per passione competenze in grafica e montaggio video, in particolare con <span class="skill">Adobe After Effects</span>.</p>
+        <p>Ho esperienza nello sviluppo web e software (<span class="skill">PHP</span>,<span class="wordPress">WordPress</span>), competenze intermedie in Office (<span class="skill">Word</span>,<span class="skill"> Excel</span>,<span class="skill"> PowerPoint</span>) e abilità medio-alte in graphic design e video editing (<span class="skill">Adobe After Effects</span> e <span class="skill">Premiere Pro</span>).</p>
+        <p>Durante il periodo scolastico ho lavorato come <span class="skill">cameriere</span> e <span class="skill">aiuto cuoco</span> in un ristorante, occupandomi di preparazione dei piatti, servizio ai tavoli, lavaggio stoviglie e pulizia del locale.</p>
+        <p>Ho realizzato questo portfolio web da zero utilizzando <span class="skill">Visual Studio Code</span>, sviluppandolo principalmente per sperimentare e mettere alla prova le mie competenze.</p>
+    </div>
     `
 };
 
@@ -88,9 +94,17 @@ const warningMsgs = {
     IT: "⚠️ Questo sito è ottimizzato per desktop. Il layout mobile è una versione semplificata."
 };
 
-const resumeFiles = {
-  EN: 'assets/CV/CV_Presti_Francesco_ENG.pdf',
-  IT: 'assets/CV/CV_Presti_Francesco_ITA.pdf'
+const resumeData = {
+  EN: {
+      img: 'assets/img/CV_Presti_Francesco_ENG.jpg',
+      pdf: 'assets/CV/CV_Presti_Francesco_ENG.pdf',
+      btnText: 'Download CV'
+  },
+  IT: {
+      img: 'assets/img/CV_Presti_Francesco_ITA.jpg',
+      pdf: 'assets/CV/CV_Presti_Francesco_ITA.pdf',
+      btnText: 'Scarica CV'
+  }
 };
 
 const bgVideo = document.getElementById('bgVideo');
@@ -152,12 +166,9 @@ function glowSequence() {
   letters.forEach((letter, index) => {
     setTimeout(() => {
       letter.classList.add('glow');
-      if (index > 0) letters[index - 1].classList.remove('glow');
-      if (index === letters.length - 1) {
-        setTimeout(() => {
-          letter.classList.remove('glow');
-        }, delay);
-      }
+      setTimeout(() => {
+        letter.classList.remove('glow');
+      }, 800);
     }, index * delay);
   });
 }
@@ -271,13 +282,14 @@ function setLanguage(lang) {
         contactNote,
         sendEmailBtn,
         langLabel,
-        warningText
+        warningText,
+        cvImage,
+        cvDownloadBtn
     ].filter(el => el !== null);
 
     elementsToFade.forEach(el => {
+        el.classList.remove('lang-fade');
         el.style.opacity = '0';
-        el.style.transform = 'translateY(5px)';
-        el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     });
 
     setTimeout(() => {
@@ -301,16 +313,12 @@ function setLanguage(lang) {
             warningText.textContent = warningMsgs[lang];
         }
 
-        resumeIframe.style.opacity = '0';
-        resumeIframe.src = resumeFiles[lang];
-        resumeIframe.onload = () => {
-             resumeIframe.style.opacity = '1';
-        };
+        cvImage.src = resumeData[lang].img;
+        cvDownloadBtn.href = resumeData[lang].pdf;
+        cvDownloadText.textContent = resumeData[lang].btnText;
 
         elementsToFade.forEach(el => {
-            el.style.opacity = '';
-            el.style.transform = '';
-            el.style.transition = '';
+            el.classList.add('lang-fade');
         });
     }, 300);
 }
@@ -326,31 +334,24 @@ const preloader = document.getElementById("preloader");
 const preloaderText = document.querySelector(".preloader-text");
 let loadProgress = 0;
 const progressInterval = setInterval(() => {
-    loadProgress += Math.random() * 15;
-    if (loadProgress > 95) loadProgress = 95;
+    loadProgress += 0.8;
+    if (loadProgress > 100) loadProgress = 100;
     if (preloaderText) preloaderText.style.setProperty('--load-percent', loadProgress + '%');
-}, 150);
+    if (loadProgress >= 100) hidePreloader();
+}, 20);
 
 function hidePreloader() {
-    if (!preloader) return;
+    if (!preloader || preloader.style.display === 'none') return;
     clearInterval(progressInterval);
-    if (preloaderText) preloaderText.style.setProperty('--load-percent', '100%');
-    preloader.style.opacity = '1';
-    preloader.style.transition = 'opacity 0.6s ease';
+    preloader.style.transition = 'opacity 0.8s ease';
+    preloader.style.opacity = '0';
     setTimeout(() => {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 600);
-    }, 400);
+        preloader.style.display = 'none';
+    }, 800);
 }
 
 if (bgVideo) {
-    if (bgVideo.readyState >= 4) { 
-        hidePreloader();
-    } else {
-        bgVideo.addEventListener('canplaythrough', hidePreloader);
-    }
-} else {
-    window.addEventListener("load", hidePreloader);
+    bgVideo.addEventListener('canplaythrough', () => {
+        if(loadProgress < 100) loadProgress = 100;
+    });
 }
