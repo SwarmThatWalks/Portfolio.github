@@ -243,14 +243,14 @@ body {
 
 .scroll-hint {
     display: none;
-    font-size: 10px;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
+    font-size: 12px;
+    color: #fff;
+    text-transform: lowercase;
+    font-style: italic;
     letter-spacing: 1px;
-    text-align: center;
-    margin-top: -5px;
-    margin-bottom: 10px;
-    animation: textPulse 2s infinite ease-in-out;
+    text-shadow: 0 0 8px #fff;
+    width: 100%;
+    text-align: left;
 }
 
 @keyframes textPulse {
@@ -557,18 +557,13 @@ footer {
     }
 
     .header-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        padding: 30px;
-        flex-direction: column;
-        gap: 8px;
-        align-items: center;
-        width: 100%;
-        background: rgba(0,0,0,0.5);
-        height: 80px; 
+        position: fixed; top: 0; left: 0; right: 0;
+        padding: 10px; flex-direction: column; gap: 8px;
+        align-items: center; width: 100%; background: rgba(0,0,0,0.8);
+        backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.05); height: 80px; 
+
     }
+    .settings-group { transform: scale(0.85); gap: 10px; }
 
     #glow-text {
         font-size: 28px;
@@ -630,43 +625,50 @@ footer {
         display: none; 
     }
     
-    .content-area {
-        width: 100%;
-        height: 100%;
-        flex: 1;
-        margin-left: 0;
-        display: flex;
-        align-items: center;
+
+    .content-area { 
+        width: 100%; 
+        height: auto; 
+        flex: 1; 
+        margin-left: 0; 
+        display: flex; 
+        align-items: flex-start; 
         justify-content: center;
+        overflow: hidden;
     }
     
-    .content-panel {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) !important;
-        width: 100%;
-        height: auto;
-        max-height: 70vh;
-        display: none;
-        flex-direction: column;
+    .content-panel { 
+        position: relative; 
+        top: auto; 
+        left: auto; 
+        transform: none; 
+        width: 100%; 
+        height: 100%; 
+        display: none; 
+        flex-direction: column; 
         align-items: center;
-        justify-content: center;
-        text-align: center;
+        justify-content: flex-start;
     }
 
-    .content-panel.active {
-        display: flex;
+    #playlist-panel.active, #projects-panel.active {
+        left: 0;
     }
+
+    .content-panel.active { display: flex; opacity: 1; pointer-events: auto; }
 
     .title-with-icon {
         padding-left: 0;
         justify-content: center;
-        gap: 8px;
+        gap: 0px;
         width: 100%;
-    }
+        flex-direction: column;
 
-    .content-panel h2 {
-        font-size: 20px;
+    }
+    .scroll-hint {
+    display: contents;
+    }
+    .content-panel h2 { 
+        font-size: 24px; text-align: center; 
     }
 
     .text-wrapper {
