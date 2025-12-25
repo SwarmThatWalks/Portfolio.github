@@ -484,7 +484,7 @@ footer {
     text-decoration: none;
     font-size: 14px;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 10px;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
@@ -742,3 +742,4 @@ footer {
     }
 
 }
+
