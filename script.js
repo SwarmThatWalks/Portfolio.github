@@ -166,9 +166,12 @@ function glowSequence() {
   letters.forEach((letter, index) => {
     setTimeout(() => {
       letter.classList.add('glow');
-      setTimeout(() => {
-        letter.classList.remove('glow');
-      }, 800);
+      if (index > 0) letters[index - 1].classList.remove('glow');
+      if (index === letters.length - 1) {
+        setTimeout(() => {
+          letter.classList.remove('glow');
+        }, delay);
+      }
     }, index * delay);
   });
 }
@@ -331,23 +334,25 @@ langToggle.addEventListener("change", () => {
 });
 
 const preloader = document.getElementById("preloader");
-const preloaderText = document.querySelector(".preloader-text");
-let loadProgress = 0;
-const progressInterval = setInterval(() => {
-    loadProgress += 0.8;
-    if (loadProgress > 100) loadProgress = 100;
-    if (preloaderText) preloaderText.style.setProperty('--load-percent', loadProgress + '%');
-    if (loadProgress >= 100) hidePreloader();
-}, 20);
 
 function hidePreloader() {
-    if (!preloader || preloader.style.display === 'none') return;
-    clearInterval(progressInterval);
-    preloader.style.transition = 'opacity 0.8s ease';
-    preloader.style.opacity = '0';
+    if (!preloader) return;
     setTimeout(() => {
-        preloader.style.display = 'none';
-    }, 800);
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 1200);
+    }, 2800);
+}
+
+if (bgVideo) {
+    if (bgVideo.readyState >= 4) { 
+        hidePreloader();
+    } else {
+        bgVideo.addEventListener('canplaythrough', hidePreloader);
+    }
+} else {
+    window.addEventListener("load", hidePreloader);
 }
 
 if (bgVideo) {
