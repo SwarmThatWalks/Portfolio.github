@@ -472,42 +472,6 @@ footer {
   font-size: 16px;
 }
 
-.dev-warning {
-  display: none;
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 12px 20px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 28px;
-  color: #ccc;
-  font-size: 13px;
-  backdrop-filter: blur(10px);
-  z-index: 999;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.dev-warning.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.dev-warning .close-warning {
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 0 4px;
-}
-
 .cv-preview {
     max-height: 52vh;
     width: auto;
@@ -543,6 +507,42 @@ footer {
     animation: langFadeEffect 0.5s ease forwards;
 }
 
+.dev-warning {
+  display: none;
+  position: fixed;
+  bottom: 12%;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 28px;
+  color: #ccc;
+  font-size: 11px;
+  z-index: 999;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.dev-warning.fade-out {
+  opacity: 0;
+  pointer-events: none;
+
+}
+
+.dev-warning .close-warning {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0 4px;
+}
+
 @keyframes langFadeEffect {
     0% { opacity: 0; }
     100% { opacity: 1; }
@@ -567,7 +567,7 @@ footer {
         top: 0;
         left: 0;
         right: 0;
-        padding: 10px;
+        padding: 30px;
         flex-direction: column;
         gap: 8px;
         align-items: center;
@@ -726,6 +726,9 @@ footer {
         max-width: 200px;
         text-align: center;
     }
+    .dev-warning {
+    display: block;
+   }
 
     footer {
         padding: 10px 20px;
@@ -742,4 +745,3 @@ footer {
         letter-spacing: 3px;
     }
 }
-
