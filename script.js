@@ -250,7 +250,7 @@ if (copyEmailBtn) {
 
 const muteToggle = document.getElementById("muteToggle");
 let isMuted = localStorage.getItem("muted") === "true" ? true : false;
-muteToggle.checked = !isMuted; 
+muteToggle.checked = !isMuted;
 
 function updateMuteState() {
     const audioElements = document.querySelectorAll("audio");
