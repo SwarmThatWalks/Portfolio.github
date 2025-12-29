@@ -28,6 +28,9 @@ const contactTitle = document.getElementById('contact-title');
 const scrollHint = document.getElementById('scroll-hint');
 const sendEmailBtn = document.getElementById('sendEmailBtn');
 const sendEmailText = sendEmailBtn.querySelector('.btn-text');
+const langBtn = document.getElementById("langBtn");
+const muteBtn = document.getElementById("muteBtn");
+
 
 let currentActiveIndex = 0;
 
@@ -248,9 +251,7 @@ if (copyEmailBtn) {
     });
 }
 
-const muteToggle = document.getElementById("muteToggle");
-let isMuted = localStorage.getItem("muted") === "true" ? true : false;
-muteToggle.checked = !isMuted;
+let isMuted = localStorage.getItem("muted") === "true";
 
 function updateMuteState() {
     const audioElements = document.querySelectorAll("audio");
@@ -258,16 +259,20 @@ function updateMuteState() {
     clickSound.muted = isMuted;
     closeSound.muted = isMuted;
     localStorage.setItem("muted", isMuted);
+
+    if (isMuted) {
+        muteBtn.classList.add("muted");
+    } else {
+        muteBtn.classList.remove("muted");
+    }
 }
 
-muteToggle.addEventListener("change", () => {
-    isMuted = !muteToggle.checked;
+muteBtn.addEventListener("click", () => {
+    isMuted = !isMuted;
     updateMuteState();
 });
 updateMuteState();
 
-const langToggle = document.getElementById("langToggle");
-const langLabel = document.querySelector(".lang-text");
 let currentLang = localStorage.getItem("lang") || "EN";
 
 function setLanguage(lang) {
@@ -284,7 +289,6 @@ function setLanguage(lang) {
         contactDesc,
         contactNote,
         sendEmailBtn,
-        langLabel,
         warningText,
         cvImage,
         cvDownloadBtn
@@ -296,7 +300,7 @@ function setLanguage(lang) {
     });
 
     setTimeout(() => {
-        langLabel.textContent = lang;
+        langBtn.textContent = lang;
         
         navItems.forEach((item, index) => {
             item.textContent = navTranslations[lang][index];
@@ -326,11 +330,12 @@ function setLanguage(lang) {
     }, 300);
 }
 
-langToggle.checked = (currentLang === 'IT');
+langBtn.textContent = currentLang;
 setLanguage(currentLang);
 
-langToggle.addEventListener("change", () => {
-  setLanguage(langToggle.checked ? "IT" : "EN");
+langBtn.addEventListener("click", () => {
+  const newLang = currentLang === "EN" ? "IT" : "EN";
+  setLanguage(newLang);
 });
 
 const preloader = document.getElementById("preloader");
