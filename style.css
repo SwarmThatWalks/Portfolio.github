@@ -628,8 +628,8 @@ footer {
 
     .nav-item.active { 
         font-size: 15px; 
-        background: rgba(255, 255, 255, 0.1); 
-        color: #fff; 
+        background: rgb(255, 255, 255); 
+        color: #000; 
     }
 
     .nav-item::after { 
@@ -757,3 +757,4 @@ footer {
     }
 
 }
+
